@@ -34,8 +34,12 @@ app_license = "mit"
 # doctype_calendar_js = {"doctype" : "public/js/doctype_calendar.js"}
 
 # Doctype Overrides
-override_doctype_class = {
+# override_doctype_class = {
 #     "Social Login Key":  "iam.iam.overrides.social.SocialLoginKey"
+# }
+
+override_whitelisted_methods = {
+    "frappe.integrations.oauth2_logins.custom": "iam.iam.integrations.oauth2_logins.custom",
 }
 
 # Svg Icons
