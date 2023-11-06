@@ -33,6 +33,11 @@ app_license = "mit"
 # doctype_tree_js = {"doctype" : "public/js/doctype_tree.js"}
 # doctype_calendar_js = {"doctype" : "public/js/doctype_calendar.js"}
 
+# Doctype Overrides
+override_doctype_class = {
+#     "Social Login Key":  "iam.iam.overrides.social.SocialLoginKey"
+}
+
 # Svg Icons
 # ------------------
 # include app icons in desk
