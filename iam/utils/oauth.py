@@ -288,7 +288,8 @@ def update_oauth_user(user: str, data: dict, provider: str):
                         frappe.db.get_value("Social Login Key", provider, "user_id_property") or "sub"
                 )
                 user.set_social_login_userid(provider, userid=data[user_id_property])
-
+    print('update_user_record')
+    print(update_user_record)
     if update_user_record:
         user.flags.ignore_permissions = True
         user.flags.no_welcome_mail = True

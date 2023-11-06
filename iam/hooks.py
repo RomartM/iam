@@ -39,7 +39,7 @@ app_license = "mit"
 # }
 
 override_whitelisted_methods = {
-    "frappe.integrations.oauth2_logins.custom": "iam.iam.integrations.oauth2_logins.custom",
+    "frappe.integrations.oauth2_logins.custom": "iam.integrations.oauth2_logins.custom",
 }
 
 # Svg Icons
