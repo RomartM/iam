@@ -288,14 +288,14 @@ def update_oauth_user(user: str, data: dict, provider: str):
                         frappe.db.get_value("Social Login Key", provider, "user_id_property") or "sub"
                 )
                 user.set_social_login_userid(provider, userid=data[user_id_property])
-    print('update_user_record')
-    print(update_user_record)
+
+                if default_social_role := frappe.db.get_single_value("Social Login Key", provider,
+                                                                     "custom_default_role"):
+                    user.add_roles(default_social_role)
+
     if update_user_record:
         user.flags.ignore_permissions = True
         user.flags.no_welcome_mail = True
-
-        if default_social_role := frappe.db.get_single_value("Social Login Key", provider, "custom_default_role"):
-            user.add_roles(default_social_role)
 
         if default_role := frappe.db.get_single_value("Portal Settings", "default_role"):
             user.add_roles(default_role)
