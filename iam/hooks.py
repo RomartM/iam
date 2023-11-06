@@ -42,6 +42,8 @@ override_whitelisted_methods = {
     "frappe.integrations.oauth2_logins.custom": "iam.integrations.oauth2_logins.custom",
 }
 
+fixtures = ["Custom Field"]
+
 # Svg Icons
 # ------------------
 # include app icons in desk
