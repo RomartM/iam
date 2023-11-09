@@ -1,3 +1,5 @@
+from keycloak import KeycloakOpenID, KeycloakAuthenticationError, KeycloakAdmin
+
 app_name = "iam"
 app_title = "Identity Access Management Integration"
 app_publisher = "Kid Mediante"
@@ -140,6 +142,18 @@ fixtures = ["Custom Field"]
 #		"on_trash": "method"
 #	}
 # }
+
+doc_events = {
+    "User": {
+        "on_update": "iam.callbacks.user.on_update_user",
+        "on_cancel": "iam.callbacks.user.on_cancel_user",
+        "on_trash": "iam.callbacks.user.on_trash_user"
+    }
+}
+
+after_migrate = [
+    "iam.extends.user.social_login",
+]
 
 # Scheduled Tasks
 # ---------------
