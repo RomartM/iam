@@ -32,7 +32,9 @@ class KeycloakAccess:
         first_name = payload.get('first_name')
         last_name = payload.get('last_name')
 
-        if not self.keycloak.get_user_id(user_email):
+        kc_user = self.keycloak.get_user_id(user_email)
+
+        if not kc_user:
             user_id = self.keycloak.create_user({
                 'email': user_email,
                 'firstName': first_name,
@@ -47,6 +49,20 @@ class KeycloakAccess:
             usl.provider = self.preferred_social
             usl.userid = user_id
             usl.insert()
+
+        elif kc_user and not self.social_key_id:
+
+            usl = frappe.new_doc('User Social Login')
+            usl.parent = user_email
+            usl.parenttype = 'User'
+            usl.parentfield = 'social_logins'
+            usl.provider = self.preferred_social
+            usl.userid = kc_user
+            usl.insert()
+
+            self.social_key_id = kc_user
+
+            return self.keycloak.update_user(kc_user, payload)
         else:
             return self.keycloak.update_user(self.social_key_id, payload)
 

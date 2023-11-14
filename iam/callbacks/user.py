@@ -8,7 +8,8 @@ def get_social_login(user_name):
         filters={
             'enable_social_login': True
         },
-        pluck='name'
+        pluck='name',
+        ignore_permissions=True
     )
     usl = frappe.get_list(
         "User Social Login",
@@ -16,7 +17,8 @@ def get_social_login(user_name):
             'parent': user_name,
             'provider': ['in', slk]
         },
-        pluck='userid'
+        pluck='userid',
+        ignore_permissions=True
     )
 
     preferred_social = frappe.get_value('User', user_name, ["social_login"])
@@ -77,21 +79,3 @@ def on_cancel_user(doc, method):
     keycloak_instance.on_update({
         'enabled': False
     })
-
-
-# def on_group_assign(doc, method):
-#     social_login_name = get_social_login(doc.name)
-#
-#     keycloak_instance = KeycloakAccess(social_login_name)
-#
-#     keycloak_instance.on_update({
-#         'enabled': False
-#     })
-
-
-def on_reset_password(doc, method):
-    pass
-
-
-def on_action(doc, method):
-    pass
