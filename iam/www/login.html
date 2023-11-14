@@ -45,6 +45,7 @@
 
 
 
+
                                    {% if login_name_placeholder %}{{ login_name_placeholder }}{% else %}{{ _('jane@example.com') }}{% endif %}"
                            required autofocus autocomplete="username">
 
@@ -352,7 +353,7 @@
             options: {
                 onLoad: "check-sso",
                 checkLoginIframe: true,
-                silentCheckSsoRedirectUri: `${location.origin}/check-sso.html`,
+                silentCheckSsoRedirectUri: `https://iam.buksu.edu.ph/check-sso.html`,
             },
         }));
 
