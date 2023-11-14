@@ -44,6 +44,7 @@
 
 
 
+
                                    {% if login_name_placeholder %}{{ login_name_placeholder }}{% else %}{{ _('jane@example.com') }}{% endif %}"
                            required autofocus autocomplete="username">
 
@@ -334,6 +335,8 @@
 {% endblock %}
 
 {% block script %}
+    <script>{% include "templates/includes/login/login.js" %}</script>
+    {#    <script>{% include "templates/includes/sso/kc.js" %}</script>#}
     <script src="https://cdn.jsdelivr.net/npm/keycloak-js@22.0.5/dist/keycloak.min.js"></script>
     <script>
         const oidc_provider_nodes = Array.from(document.querySelectorAll(".oidc-provider"));
