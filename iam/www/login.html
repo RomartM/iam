@@ -46,6 +46,8 @@
 
 
 
+
+
                                    {% if login_name_placeholder %}{{ login_name_placeholder }}{% else %}{{ _('jane@example.com') }}{% endif %}"
                            required autofocus autocomplete="username">
 
@@ -394,9 +396,11 @@
 
                 if (authenticatedInstances.length === 1) {
                     let body = document.body;
-                    //body.classList.add("automatic-login-splashscreen");
+                    body.classList.add("automatic-login-splashscreen");
                     // Automatic login only if one account is currently login with BukSU Key
-                    // location.href = authenticatedInstances[0]?.init?.action_url
+                    setTimeout(() => {
+                        location.href = authenticatedInstances[0]?.init?.action_url
+                    }, 2000);
                 }
             })
             .catch((error) => {
