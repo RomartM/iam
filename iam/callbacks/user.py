@@ -11,6 +11,7 @@ def get_social_login(user_name):
         pluck='name',
         ignore_permissions=True
     )
+
     usl = frappe.get_list(
         "User Social Login",
         filters={
@@ -22,15 +23,23 @@ def get_social_login(user_name):
     )
 
     preferred_social = frappe.get_value('User', user_name, ["social_login"])
+    can_outbound_sync = frappe.get_value(
+        'Social Login Key',
+        preferred_social,
+        'custom_outbound_sync'
+    )
 
     if len(usl) > 0:
-        return [usl[0], preferred_social]
+        return [usl[0], preferred_social, can_outbound_sync]
     else:
-        return [False, preferred_social]
+        return [False, preferred_social, can_outbound_sync]
 
 
 def on_update_user(doc, method):
-    social_login_name, preferred_social = get_social_login(doc.name)
+    social_login_name, preferred_social, can_outbound_sync = get_social_login(doc.name)
+
+    if not can_outbound_sync:
+        return
 
     keycloak_instance = KeycloakAccess(social_login_name, preferred_social)
 
@@ -65,7 +74,10 @@ def on_update_user(doc, method):
 
 
 def on_trash_user(doc, method):
-    social_login_name, preferred_social = get_social_login(doc.name)
+    social_login_name, preferred_social, can_outbound_sync = get_social_login(doc.name)
+
+    if not can_outbound_sync:
+        return
 
     keycloak_instance = KeycloakAccess(social_login_name, preferred_social)
 
@@ -73,7 +85,10 @@ def on_trash_user(doc, method):
 
 
 def on_cancel_user(doc, method):
-    social_login_name, preferred_social = get_social_login(doc.name)
+    social_login_name, preferred_social, can_outbound_sync = get_social_login(doc.name)
+
+    if not can_outbound_sync:
+        return
 
     keycloak_instance = KeycloakAccess(social_login_name, preferred_social)
 
@@ -84,9 +99,11 @@ def on_cancel_user(doc, method):
 
 def on_logout():
     user = frappe.session.user
-    social_login_name, preferred_social = get_social_login(user)
+    social_login_name, preferred_social, can_outbound_sync = get_social_login(user)
+
+    if not can_outbound_sync:
+        return
 
     keycloak_instance = KeycloakAccess(social_login_name, preferred_social)
 
     keycloak_instance.logout()
-    print(keycloak_instance)
