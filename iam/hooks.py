@@ -155,6 +155,8 @@ after_migrate = [
     "iam.extends.user.social_login",
 ]
 
+on_logout = "iam.callbacks.user.on_logout"
+
 # Scheduled Tasks
 # ---------------
 

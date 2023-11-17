@@ -3,6 +3,7 @@ from frappe import _
 
 
 def social_login():
+    return
     try:
         user_doc = frappe.get_doc("DocType", "User")
 

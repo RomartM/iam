@@ -39,6 +39,7 @@ def on_update_user(doc, method):
         'firstName': doc.first_name,
         'lastName': doc.last_name,
         'enabled': doc.enabled,
+        'emailVerified': doc.email_verified,
     }
 
     keycloak_instance.on_update(_safe_obj)
@@ -79,3 +80,13 @@ def on_cancel_user(doc, method):
     keycloak_instance.on_update({
         'enabled': False
     })
+
+
+def on_logout():
+    user = frappe.session.user
+    social_login_name, preferred_social = get_social_login(user)
+
+    keycloak_instance = KeycloakAccess(social_login_name, preferred_social)
+
+    keycloak_instance.logout()
+    print(keycloak_instance)

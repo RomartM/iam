@@ -85,6 +85,9 @@ class KeycloakAccess:
     def trash(self):
         return self.keycloak.delete_user(self.social_key_id)
 
+    def logout(self):
+        return self.keycloak.user_logout(self.social_key_id)
+
     def group_user_add(self, group_id):
         return self.keycloak.group_user_add(self.social_key_id, group_id)
 
