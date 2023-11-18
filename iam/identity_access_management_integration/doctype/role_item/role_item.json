@@ -1,0 +1,31 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2023-11-18 16:05:59.954406",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "role"
+ ],
+ "fields": [
+  {
+   "fieldname": "role",
+   "fieldtype": "Link",
+   "label": "Role",
+   "options": "Role"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2023-11-18 16:06:30.196810",
+ "modified_by": "Administrator",
+ "module": "Identity Access Management Integration",
+ "name": "Role Item",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
