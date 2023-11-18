@@ -1,0 +1,31 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2023-11-18 14:01:37.427363",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "realm_group"
+ ],
+ "fields": [
+  {
+   "fieldname": "realm_group",
+   "fieldtype": "Link",
+   "label": "Realm Group",
+   "options": "Realm Group"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2023-11-18 14:03:46.540166",
+ "modified_by": "Administrator",
+ "module": "Identity Access Management Integration",
+ "name": "Realm Group Item",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
