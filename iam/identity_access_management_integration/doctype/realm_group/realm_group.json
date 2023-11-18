@@ -1,11 +1,13 @@
 {
  "actions": [],
  "allow_rename": 1,
+ "autoname": "field:group_name",
  "creation": "2023-11-18 14:02:47.202628",
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
   "group_name",
+  "allowed_system_access",
   "section_break_e5lq",
   "lft",
   "rgt",
@@ -56,16 +58,24 @@
   {
    "fieldname": "group_name",
    "fieldtype": "Data",
-   "label": "Group Name"
+   "label": "Group Name",
+   "unique": 1
+  },
+  {
+   "fieldname": "allowed_system_access",
+   "fieldtype": "Table MultiSelect",
+   "label": "Allowed System Access",
+   "options": "Smart System Item"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_tree": 1,
  "links": [],
- "modified": "2023-11-18 14:03:36.081228",
+ "modified": "2023-11-18 14:40:29.276742",
  "modified_by": "Administrator",
  "module": "Identity Access Management Integration",
  "name": "Realm Group",
+ "naming_rule": "By fieldname",
  "nsm_parent_field": "parent_realm_group",
  "owner": "Administrator",
  "permissions": [
