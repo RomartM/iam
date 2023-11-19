@@ -67,6 +67,8 @@ def get_context(context):
             "custom_realm_name",
             "custom_provider_label",
             "custom_keycloak_options",
+            "custom_iam_child_system",
+            "custom_iam_portal_login",
             "base_url",
         ],
         order_by="name",
@@ -95,6 +97,8 @@ def get_context(context):
                     "label": provider.custom_provider_label,
                     "base_url": provider.base_url,
                     "options": provider.custom_keycloak_options,
+                    "child_system": provider.custom_iam_child_system,
+                    "iam_portal_login": provider.custom_iam_portal_login,
                     "icon": icon,
                 }
             )

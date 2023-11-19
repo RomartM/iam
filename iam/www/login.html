@@ -205,6 +205,8 @@
                                                data-url="{{ provider.base_url }}"
                                                data-options='{{ provider.options }}'
                                                data-label='{{ provider.label }}'
+                                               data-child='{{ provider.child_system }}'
+                                               data-portal-login='{{ provider.iam_portal_login }}'
                                             >
                                                 {% if provider.icon %}
                                                     {{ provider.icon }}
@@ -351,6 +353,8 @@
                 clientId: nd.getAttribute("data-clientid"),
                 action_url: nd.getAttribute("href"),
                 label: nd.getAttribute("data-label"),
+                child: nd.getAttribute("data-child"),
+                portal: nd.getAttribute("data-portal-login"),
             },
             options: {
                 onLoad: "check-sso",
@@ -370,7 +374,7 @@
                                 .loadUserProfile()
                                 .then(({firstName, lastName, id}) => {
                                     init.instance.innerHTML = `<div class="buksu-key-wrapper">
-                                <img src="${location.origin}/api/method/iam.www.avatar.media?uid=${id}&w=26&h=26" class="auth-avatar"/>
+                                <img src="${init.portal}/api/method/iam.www.avatar.media?uid=${id}&w=26&h=26" class="auth-avatar"/>
                                 <div class="buksu-key auth-info">
                                     <div class="buksu-key auth-intro">Sign in as ${init.label}:</div>
                                     <div class="buksu-key auth-label"> ${firstName} ${lastName}</div>
