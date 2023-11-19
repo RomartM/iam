@@ -205,7 +205,6 @@
                                                data-url="{{ provider.base_url }}"
                                                data-options='{{ provider.options }}'
                                                data-label='{{ provider.label }}'
-                                               data-child='{{ provider.child_system }}'
                                                data-portal-login='{{ provider.iam_portal_login }}'
                                             >
                                                 {% if provider.icon %}
@@ -353,7 +352,6 @@
                 clientId: nd.getAttribute("data-clientid"),
                 action_url: nd.getAttribute("href"),
                 label: nd.getAttribute("data-label"),
-                child: nd.getAttribute("data-child"),
                 portal: nd.getAttribute("data-portal-login"),
             },
             options: {

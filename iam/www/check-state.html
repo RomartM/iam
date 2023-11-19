@@ -6,19 +6,7 @@
 
 {% block script %}
     <script>
-        parent.postMessage(location.href, location.origin);
-    window.addEventListener('message', (event) => {
-    const parentOrigin = event.origin; // Get the origin domain of the parent window
-
-    // Check if the message is from the parent window requesting login status
-    if (event.data === 'checkLoginStatus') {
-        // Check login status here
-        const isLoggedIn = frappe.user
-
-        // Send response back to the parent window's domain
-        event.source.postMessage(isLoggedIn, parentOrigin);
-    }
-});
+    parent.postMessage(frappe.user, location.origin);
     </script>
 {% endblock %}
 
