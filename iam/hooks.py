@@ -1,5 +1,3 @@
-from keycloak import KeycloakOpenID, KeycloakAuthenticationError, KeycloakAdmin
-
 app_name = "iam"
 app_title = "Identity Access Management Integration"
 app_publisher = "Kid Mediante"
@@ -129,7 +127,7 @@ fixtures = ["Custom Field"]
 
 # override_doctype_class = {
 #	"ToDo": "custom_app.overrides.CustomToDo"
-# }
+# }override_whitelisted_methods
 
 # Document Events
 # ---------------
@@ -186,9 +184,9 @@ on_logout = "iam.callbacks.user.on_logout"
 # Overriding Methods
 # ------------------------------
 #
-# override_whitelisted_methods = {
-#	"frappe.desk.doctype.event.event.get_events": "iam.event.get_events"
-# }
+override_whitelisted_methods = {
+	"frappe.handler.web_logout": "iam.handler.web_logout"
+}
 #
 # each overriding function accepts a `data` argument;
 # generated from the base implementation of the doctype dashboard,
