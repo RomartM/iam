@@ -185,7 +185,7 @@ on_logout = "iam.callbacks.user.on_logout"
 # ------------------------------
 #
 override_whitelisted_methods = {
-	"frappe.handler.web_logout": "iam.handler.web_logout"
+	"web_logout": "iam.handler.web_logout"
 }
 #
 # each overriding function accepts a `data` argument;
