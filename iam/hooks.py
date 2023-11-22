@@ -40,6 +40,7 @@ app_license = "mit"
 
 override_whitelisted_methods = {
     "frappe.integrations.oauth2_logins.custom": "iam.integrations.oauth2_logins.custom",
+    "web_logout": "iam.handler.web_logout"
 }
 
 fixtures = ["Custom Field"]
@@ -184,9 +185,9 @@ on_logout = "iam.callbacks.user.on_logout"
 # Overriding Methods
 # ------------------------------
 #
-override_whitelisted_methods = {
-	"web_logout": "iam.handler.web_logout"
-}
+# override_whitelisted_methods = {
+# 	"web_logout": "iam.handler.web_logout"
+# }
 #
 # each overriding function accepts a `data` argument;
 # generated from the base implementation of the doctype dashboard,
