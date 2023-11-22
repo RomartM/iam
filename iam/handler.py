@@ -8,6 +8,5 @@ def web_logout():
     frappe.local.login_manager.logout()
     frappe.db.commit()
 
-    if redirect_to:
-        frappe.local.flags.redirect_location = redirect_to
-        raise frappe.Redirect
+    frappe.local.response["type"] = "redirect"
+    frappe.local.response["location"] = redirect_to
